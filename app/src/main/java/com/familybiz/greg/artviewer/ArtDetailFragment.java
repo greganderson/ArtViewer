@@ -1,6 +1,7 @@
 package com.familybiz.greg.artviewer;
 
 import android.app.Fragment;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ public class ArtDetailFragment extends Fragment {
 		if (mArtDetailView == null)
 			return;
 
-		int artResourceIdentifier = ArtCollection.getInstance().getArt(identifier).image;
-		mArtDetailView.setImageResource(artResourceIdentifier);
+		Bitmap artResourceIdentifier = ArtCollection.getInstance().getArt(identifier).image;
+		mArtDetailView.setImageBitmap(artResourceIdentifier);
 	}
 }

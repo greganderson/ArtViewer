@@ -20,7 +20,7 @@ public class ArtListFragment extends Fragment implements ListAdapter {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		ListView artListView = new ListView(getActivity());
+		final ListView artListView = new ListView(getActivity());
 		artListView.setAdapter(this);
 
 		artListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -30,6 +30,13 @@ public class ArtListFragment extends Fragment implements ListAdapter {
 
 				if (mOnArtSelectedListener != null)
 					mOnArtSelectedListener.onArtSelected(ArtListFragment.this, artIdentifier);
+			}
+		});
+
+		ArtCollection.getInstance().setOnArtChangedListener(new ArtCollection.OnArtChangedListener() {
+			@Override
+			public void onArtChanged() {
+				artListView.invalidateViews();
 			}
 		});
 

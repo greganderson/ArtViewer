@@ -2,6 +2,7 @@ package com.familybiz.greg.artviewer;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -19,23 +20,26 @@ public class ArtActivity extends Activity {
 	    // Add test info
 	    Art mona = new Art();
 	    mona.name = "Mona Lisa";
-	    mona.image = R.drawable.mona;
+	    mona.image = BitmapFactory.decodeResource(getResources(), R.drawable.mona);
 	    ArtCollection.getInstance().addArt(mona);
 
 	    Art awesome = new Art();
 	    awesome.name = "Stiff Arm";
-	    awesome.image = R.drawable.awesome;
+	    awesome.image =  BitmapFactory.decodeResource(getResources(), R.drawable.awesome);
 	    ArtCollection.getInstance().addArt(awesome);
 
 	    Art clocks = new Art();
 	    clocks.name = "Clocks";
-	    clocks.image = R.drawable.clocks;
+	    clocks.image =  BitmapFactory.decodeResource(getResources(), R.drawable.clocks);
 	    ArtCollection.getInstance().addArt(clocks);
 
 	    Art farm = new Art();
 	    farm.name = "Farmland";
-	    farm.image = R.drawable.farm;
+	    farm.image = BitmapFactory.decodeResource(getResources(), R.drawable.farm);
 	    ArtCollection.getInstance().addArt(farm);
+
+	    ArtCollection.getInstance().scrapeArt("http://www.nytimes.com");
+
 
 	    LinearLayout rootLayout = new LinearLayout(this);
 	    rootLayout.setOrientation(LinearLayout.HORIZONTAL);
