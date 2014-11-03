@@ -33,9 +33,15 @@ public class ArtListFragment extends Fragment implements ListAdapter {
 			}
 		});
 
+		Set<UUID> artIdentifiers = ArtCollection.getInstance().getIdentifiers();
+		// TODO: Oder list
+		mArtIdentifiersByName = artIdentifiers.toArray(new UUID[artIdentifiers.size()]);
 		ArtCollection.getInstance().setOnArtChangedListener(new ArtCollection.OnArtChangedListener() {
 			@Override
 			public void onArtChanged() {
+				Set<UUID> artIdentifiers = ArtCollection.getInstance().getIdentifiers();
+				// TODO: Oder list
+				mArtIdentifiersByName = artIdentifiers.toArray(new UUID[artIdentifiers.size()]);
 				artListView.invalidateViews();
 			}
 		});
